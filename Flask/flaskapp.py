@@ -77,8 +77,8 @@ def get_bottom():
 def main_page():
     title = "Amazon Rainforest Fire Forecasting: Project Overview"
     main_html = """
-    <h3>Amazon Fire Prediction<br>By: Steven Hewitt, Chang Liu, Fernando Roriz, Jose Torres</h3>
-	<h3> <br>Motivation</h3>
+    <br><h3>Amazon Fire Prediction<br>By: Steven Hewitt, Chang Liu, Fernando Roriz, Jose Torres</h3>
+	<h3>Motivation</h3>
 	<p> There are thousands of fires in the Amazon Rainforest that pose a threat to millions of animals and hundreds of indegenous tribes that depend on the Amazon to survive. 
 	Lula (President Elect of Brazil) during his campaign promised to fight deforestation, grant protected status to 500,000 square Kilometers of the Amazon, subsidize sustainable farming, and reform the tax code to usher a greener economy. 
 	Brazil vowed to halt deforestation by 2030 but in June of 2022 the number of fires in the Amazon hit a 15 year high. 
@@ -148,36 +148,39 @@ def forecast_page():
 	<p> 
 	<img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/q2.jpg">
 	<br><br>
-	Our second model uses a convolutional LSTM model. 
-	It combines recurrent connection of an LSTM with the convolutional kernel of a CNN.
-	This was originally developed in 2015 on precipitaion nowcasting. 
-	For our model our input is one frame per day and one output frame per prediction. 
-	We attempted to map a multichannel input to a single channel output. 
-	Our final model utilized a transfer learning approach. 
-	Our primary metric that we used was Mean Squared Error or MSE. 
-	The supporting metrics we used were Structural similarity  or SSIM and Peak Signal-to-Noise Ratio or PSNR.
-	SSIM is the perceived similarity of images and uses luminance, contrast and structure.
-	SSIM ranges from -1 to 1 with 1 being perfect.
-	PSNR is designed to grade image compression
-	It ranges from 0 to 100 with 100 being perfect.</p>
-	<br>
-	<table style="border: 1px solid black;border-collapse: collapse;"><tr><td style="border: 1px solid black;border-collapse: collapse;"><b>Model Version</b></td><td style="border: 1px solid black;border-collapse: collapse;"><b>MSE</b></td><td style="border: 1px solid black;border-collapse: collapse;"><b>SSIM</b></td><td style="border: 1px solid black;border-collapse: collapse;"><b>PSNR</b></td></tr>
-	<tr><td style="border: 1px solid black;border-collapse: collapse;">Baseline</td><td style="border: 1px solid black;border-collapse: collapse;">0.050</td><td style="border: 1px solid black;border-collapse: collapse;">0.373</td><td style="border: 1px solid black;border-collapse: collapse;">15.44</td></tr></table>
-	<p>The best early model results used for and deforestation data as inputs.
-	WBCE loss helped with the class imbalance.
-	We used 2017-2019 data to train our model and evaluated it against the 2020 dataset.
-	We then broadened the scope  of the data set from September data to include October, November and parts of August.
-	We reduced the number of model parameters by removing one ConvLSTM layer and decreasing the number of filters.
-	Another adjustment we made to the model was incorporating transfer learning.
-	Pretrained on moving MNIST and provided 90,000 clean 11 frame examples for our model to learn to encode, decode and predict motion.
-	The VIIRS data was fine tuned and the deforestation data was dropped for transfer learning to work properly.
-	Our models were evaluated on the 2021 test set.
-	Transfer learning approach massively improved all metrics.</p>
-	<table style="border: 1px solid black;border-collapse: collapse;"><tr style="border: 1px solid black;border-collapse: collapse;"><td style="border: 1px solid black;border-collapse: collapse;"><b>Model Version</b></td><td style="border: 1px solid black;border-collapse: collapse;"><b>MSE</b></td><td style="border: 1px solid black;border-collapse: collapse;"><b>SSIM</b></td><td style="border: 1px solid black;border-collapse: collapse;"><b>PSNR</b></td></tr>
-	<tr><td style="border: 1px solid black;border-collapse: collapse;">Baseline</td><td>0.042</td><td style="border: 1px solid black;border-collapse: collapse;">0.334</td><td style="border: 1px solid black;border-collapse: collapse;">16.09</td></tr>
-	<tr><td style="border: 1px solid black;border-collapse: collapse;">Transfer Learning</td><td style="border: 1px solid black;border-collapse: collapse;">0.015</td><td style="border: 1px solid black;border-collapse: collapse;">0.746</td><td style="border: 1px solid black;border-collapse: collapse;">45.57</td></tr>
-	<tr><td style="border: 1px solid black;border-collapse: collapse;"><i>Change</i></td><td style="border: 1px solid black;border-collapse: collapse;">-0.027</td><td style="border: 1px solid black;border-collapse: collapse;">0.412</td><td style="border: 1px solid black;border-collapse: collapse;">29.48</td></tr>
-	<tr><td style="border: 1px solid black;border-collapse: collapse;"><i>Change (%)</i></td><td style="border: 1px solid black;border-collapse: collapse;">-64.5%</td><td style="border: 1px solid black;border-collapse: collapse;">123.4%</td><td style="border: 1px solid black;border-collapse: collapse;">183.3%</td></tr></table>
+	Our forecasting model is built using the Keras implementation of Convolutional LSTMs.
+	These layers, originally developed in a 2015 paper on precipitaion nowcasting, combine the recurrent connection of an LSTM with the convolutional kernel of a CNN.
+	We chain multiple ConvLSTM layers together in sequence to treat our problem as a next frame video prediction task.
+	The model input is a 10 frame video, with one frame per day representing the location of fires/deforestation in the area of interest, and the output is a prediction of fire locations for the next day.
+	The primary metric that we used to measure success was Mean Squared Error (MSE), which ranges from 0 to 1 for our model.
+	The supporting metrics we used were Structural Similarity Index Measure (SSIM) and Peak Signal-to-Noise Ratio (PSNR).
+	SSIM is the perceived similarity of images using a composite measure of luminance, contrast, and structure. SSIM ranges from -1 to 1, with 1 being perfect.
+	PSNR was originally designed to grade output fidelity from using different image compression algorithms. It ranges from 0 to 100, with 100 being perfect.
+	We used 2017-2019 data to train our baseline model and evaluated it against the 2020 dataset.
+	Utilizing WBCE loss helped with the severe class imbalance in our target prediction labels.</p>
+	<u>Baseline Results</u>
+	<table border="1" cellpadding="0" cellspacing="0"><tr><td><b>Model Version</b></td><td><b>MSE</b></td><td><b>SSIM</b></td><td><b>PSNR</b></td></tr>
+	<tr><td>Baseline</td><td>0.050</td><td>0.373</td><td>15.44</td></tr></table>
+	
+	<p>To improve on our baseline model, we made various changes to our procedure.
+	We broadened the scope  of the dataset from just September data to also include October, November and parts of August.
+	We used 4-fold cross validation, with each year from 2017-2020 as a different fold.
+	We reduced the number of model parameters by removing one ConvLSTM layer and decreasing the number of filters in some other layers.
+	Another key adjustment we made was incorporating transfer learning.
+	Pretraining on moving MNIST provided 90,000 clean 11 frame examples for our model to learn to encode, decode and predict motion.
+	After 48 hours of pretraining on moving MNIST, our model was fine-tuned on the VIIRS fire dataset.
+	Deforestation data had to be dropped for our transfer learning apprach to work properly.</p>
+	
+	<img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/mnist.gif" width="128" height="128">
+
+	<p>Once training was complete, both the baseline and the new transfer learning model were evaluated on the 2021 test set.
+	The transfer learning approach massively improved performance across all metrics.</p>
+	<u>Final Results</u>
+	<table border="1" cellpadding="0" cellspacing="0"><tr><td><b>Model Version</b></td><td><b>MSE</b></td><td><b>SSIM</b></td><td><b>PSNR</b></td></tr>
+	<tr><td>Baseline</td><td>0.042</td><td>0.334</td><td>16.09</td></tr>
+	<tr><td>Transfer Learning</td><td>0.015</td><td>0.746</td><td>45.57</td></tr>
+	<tr><td><i>Change</i></td><td>-0.027</td><td>0.412</td><td>29.48</td></tr>
+	<tr><td><i>Change (%)</i></td><td>-64.5%</td><td>123.4%</td><td>183.3%</td></tr></table>
     """
     
     forecast_html = get_top(title) + forecast_html + get_bottom()
