@@ -15,7 +15,7 @@ def get_top(title):
         <title>""" + str(title) + """</title>
             <style>
             body {
-            font-family: 1em sans-serif, Arial, Geneva, Helvetica
+            font-family: sans-serif, Arial, Geneva, Helvetica
             }
 
             /* sidebar menu */
