@@ -9,9 +9,9 @@ Project Team:
 <ul><li>Steven Hewitt</li>
 <li>Chang Liu</li>
 <li>Fernando Roriz</li>
-<li>Jose Torres</li></ul><br>
+<li>Jose Torres</li></ul>
 
-https://apps-fall22.ischool.berkeley.edu/AmazonFires/ <br>
+Website: https://apps-fall22.ischool.berkeley.edu/AmazonFires/ <br>
 
 ### Repo Contents
     ├── EDA
