@@ -3,7 +3,7 @@
 UC Berkeley School of Information<br>
 Capstone Project<br>
 
-<p>An examination of deforestation-linked fires in the Brazilian state of Pará. Using satellite fire detections and supplimentary governmental data we aim to predict which deforested areas will experience fires, and once fires start we forecast how they will spread.</p>
+<p>An examination of deforestation-linked fires in the Brazilian state of Pará. Using satellite fire detections and supplementary governmental data we aim to predict which deforested areas will experience fires, and once fires start we forecast how they will spread.</p>
 
 <section><b>Project Team:</b>
 <ul><li>Steven Hewitt</li>
