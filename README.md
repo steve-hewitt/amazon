@@ -5,13 +5,13 @@ Capstone Project<br>
 
 <p>An examination of deforestation-linked fires in the Brazilian state of Pará. Using satellite fire detections and supplimentary governmental data we aim to predict which deforested areas will experience fires, and once fires start we forecast how they will spread.</p>
 
-Project Team:
+<section><b>Project Team:</b>
 <ul><li>Steven Hewitt</li>
 <li>Chang Liu</li>
 <li>Fernando Roriz</li>
-<li>Jose Torres</li></ul>
+<li>Jose Torres</li></ul></section>
 
-Website: https://apps-fall22.ischool.berkeley.edu/AmazonFires/ <br>
+<b>Website:</b> https://apps-fall22.ischool.berkeley.edu/AmazonFires/ <br>
 
 ### Repo Contents
     ├── EDA
