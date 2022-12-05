@@ -62,4 +62,4 @@ Capstone Project<br>
     ├── README.md                                     <- Overview of repo contents.
     ├── W210_forestfire_precip_data_cleaning.ipynb    <- Code for precipiation data preprocessing.
     ├── W210_forestfire_wind_cleaning.ipynb           <- Original code for wind data preprocessing.
-    └──  W210_forestfire_wind_data_cleaning_v2.ipynb   <- Final code for wind data preprocessing.
+    └── W210_forestfire_wind_data_cleaning_v2.ipynb   <- Final code for wind data preprocessing.
