@@ -189,6 +189,8 @@ def forecast_page():
 	<tr><td>Transfer Learning</td><td>0.015</td><td>0.746</td><td>45.57</td></tr>
 	<tr><td><i>Change</i></td><td>-0.027</td><td>0.412</td><td>29.48</td></tr>
 	<tr><td><i>Change (%)</i></td><td>-64.5%</td><td>123.4%</td><td>183.3%</td></tr></table>
+	<br>
+	<center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/forecast_sample.png"></center>
     """
     
     forecast_html = get_top(title) + forecast_html + get_bottom()
