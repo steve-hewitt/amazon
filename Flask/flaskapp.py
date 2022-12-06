@@ -3,10 +3,9 @@ from flask import Flask, request
 app = Flask(__name__)
 
 # Get map HTML from file and store as string.
-#with open('/groups/AmazonFires/flaskapp/map.html') as map_html_doc:
-#    map_html = map_html_doc.read()
-#map_html = '<html><body><font color="red"><h1>MAP</h1></font></body></html>'
-map_html = '<img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/firemap.jpg" width="800" height="450">'
+with open('/groups/AmazonFires/flaskapp/map.html') as map_html_doc:
+    map_html = map_html_doc.read()
+#map_html = '<img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/firemap.jpg" width="800" height="450">'
 
 # HTML for header and sidenav.
 def get_top(title):
@@ -77,14 +76,14 @@ def get_bottom():
 def main_page():
     title = "Amazon Rainforest Fire Forecasting: Project Overview"
     main_html = """
-    <br><h3>Amazon Fire Prediction<br>By: Steven Hewitt, Chang Liu, Fernando Roriz, Jose Torres</h3>
-	<h3>Motivation</h3>
+    <br><center><h1 style="font-size: 3rem">Amazon Fire Prediction</h1><br><h2>By: Steven Hewitt, Chang Liu, Fernando Roriz, Jose Torres</h2></center><br>
+	<h1>Motivation</h1>
 	<p> There are thousands of fires in the Amazon Rainforest that pose a threat to millions of animals and hundreds of indegenous tribes that depend on the Amazon to survive. 
 	Lula (President Elect of Brazil) during his campaign promised to fight deforestation, grant protected status to 500,000 square Kilometers of the Amazon, subsidize sustainable farming, and reform the tax code to usher a greener economy. 
 	Brazil vowed to halt deforestation by 2030 but in June of 2022 the number of fires in the Amazon hit a 15 year high. 
 	The destruction of tropical forests is responsible for approximately 9% of human caused carbon dioxide emissions. Brazil is crucial for discussions on climate change. 
 	Its size and the fact that most of the Amazon is Brazilian territory puts Brazil in the spotlight.<br> 
-	<br> Our project aims to answer 2 questions, focusing on the Brazilian state of Par&#225;:<br>
+	<br> Our project aims to answer 2 questions, focusing on the Brazilian state of Par&#225;:<br><br>
 	<table cellspacing="0" cellpadding="0">
 	<tr><td><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/map_para.jpg"></td>
 	<td><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/multi_q.jpg"></td></tr></table>
@@ -98,7 +97,7 @@ def main_page():
 def data_page():
     title = "Amazon Rainforest Fire Forecasting: Data & Pipeline"
     data_html = """
-    <h3> <br>Data </h3>
+    <center><h1><br>Data </h1></center>
 	<p> We used the same datasets for both models and questions.
 	Our data on forest fires comes form NASA Earth VIIRS (Visible Infrared Imaging Radiometer Suite) which takes in active fire data.
 	VIIRS captures thermal anomalies and active fire data from Suomi National Polar-orbiting Parnership and NOAA-20 satellites.
@@ -106,6 +105,12 @@ def data_page():
 	Some of the key features include lon, lat, state, date, polygon shape, satellite, deforestation, and classification.
 	The goal with this data set is to see how many forest fire instances took place in deforestation areas based on geological informaion.
 	</p>
+    <br> <center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/Nasa.PNG"> <img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/TerraBrasilis.PNG"></center>
+    <br> <center> <h1> Data Pipeline </h1> </center>
+    <br> <center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/TargetedFiltering.PNG"></center>
+    <br> <center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/FireResample.PNG"></center>
+    <br> <center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/DeforestationResample.PNG"></center>
+    <br> <center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/PredictionTask.PNG"></center>
     """
     
     data_html = get_top(title) + data_html + get_bottom()
@@ -116,9 +121,9 @@ def data_page():
 def classify_page():
     title = "Amazon Rainforest Fire Forecasting: Classification Model"
     classify_html = """
-    <h3> <br>Classification Model</h3> 
+    <center><h1><br>Classification Model</h1></center> 
 	<p>
-	<img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/q1.jpg">
+	<center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/q1.jpg"></center>
 	<br>
 	<br>
 	This model is a KNN model with 10 neighbors.
@@ -133,8 +138,11 @@ def classify_page():
 	Areas on the map that seem to be untouched for the most part are areas with legal protection status. 
 	</p>
 	<table cellspacing="0" cellpadding="0"><tr><td>
-    	<iframe src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/map" width="880" height="495" frameBorder="0"></iframe>
+    	<iframe src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/map" width="880" height="600" frameBorder="0"></iframe>
 	</td><td><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/legend.jpg"></td></tr></table>
+        <br><br> <center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/FireClusters.PNG">
+        <br><br><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/DeforestationNoFire.PNG">
+        <br><br><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/LegalProtectionArea.PNG"></center>
     """
     
     classify_html = get_top(title) + classify_html + get_bottom()
@@ -144,9 +152,9 @@ def classify_page():
 def forecast_page():
     title = "Amazon Rainforest Fire Forecasting: Forecasting Model"
     forecast_html = """
-    <h3> <br>Forecasting Model</h3>
+    <center><h1><br>Forecasting Model</h1></center>
 	<p> 
-	<img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/q2.jpg">
+	<center><img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/q2.jpg"></center>
 	<br><br>
 	Our forecasting model is built using the Keras implementation of Convolutional LSTMs.
 	These layers, originally developed in a 2015 paper on precipitaion nowcasting, combine the recurrent connection of an LSTM with the convolutional kernel of a CNN.
@@ -190,11 +198,15 @@ def forecast_page():
 def team_page():
     title = "Amazon Rainforest Fire Forecasting: Project Team"
     team_html = """
-    <h3> <br>Team</h3>
-	<a href="https://www.linkedin.com/in/stevenhewitt/" target="_blank">Steven Hewitt</a><br> 
-	Chang Liu<br> 
-	<a href="https://www.linkedin.com/in/fernando-roriz-75607b79/" target="_blank">Fernando Roriz</a><br> 
-	<a href="https://www.linkedin.com/in/torres-jose/" target="blank">Jose Torres</a><br> 
+    <center><h1> <br><strong>Team</strong></h1>
+    <img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/Steven.jpeg" style="width:332px;height:332px;"><br>
+        <a href="https://www.linkedin.com/in/stevenhewitt/" target="_blank"><h4>Steven Hewitt</h4></a><br>
+        <img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/Chang.png" style="width:332px;height:332px;"><br>
+	<a href="https://www.linkedin.com/in/changliu0829/" target="_blank"><h4>Chang Liu</h4></a><br> 
+        <img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/Fernando.jpeg"> <br>
+	<a href="https://www.linkedin.com/in/fernando-roriz-75607b79/" target="_blank"><h4>Fernando Roriz</h4></a><br> 
+        <img src="https://apps-fall22.ischool.berkeley.edu/AmazonFires/static/Jose.png" style="width:332px;height:332px;"><br>
+	<a href="https://www.linkedin.com/in/torres-jose/" target="blank"><h4>Jose Torres</h4></a><br></center> 
     """
     
     team_html = get_top(title) + team_html + get_bottom()
@@ -204,9 +216,15 @@ def team_page():
 def references_page():
     title = "Amazon Rainforest Fire Forecasting: Reference Materials"
     references_html = """
-    <h3> <br>Team</h3>
+    <h1><br>References</h1>
 	<a href="https://www.earthdata.nasa.gov/learn/find-data/near-real-time/firms/viirs-i-band-375-m-active-fire-data">NASA VIIRS 375 m Active Fire Product</a><br>
 	<a href="http://terrabrasilis.dpi.inpe.br/en/home-page/">TerraBrasilis - Source for Deforestation Data</a><br>
+      <a href="https://cnr.ncsu.edu/news/2019/09/amazon-rainforest-fires-everything-you-need-to-know/">Amazon Rainforest Fires: Everything you need to know - Source for Motivation and background</a><br>
+	<a href="https://arxiv.org/pdf/1506.04214v1.pdf">Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting</a><br>
+	<a href="https://www.reuters.com/business/cop/brazils-lula-put-climate-center-first-post-election-speech-abroad-2022-11-16/">COP27: Greeted like a rock star, Brazil's Lula promises to protect Amazon</a><br>
+	<a href="https://www.bbc.com/news/science-environment-63625698">COP27: Brazil is back on the world stage, Lula tells climate summit</a><br>
+      <a href="https://www.lemonde.fr/en/international/article/2022/11/16/cop27-lula-promises-to-protect-the-amazon_6004551_4.html">COP27: Lula promises to protect the Amazon</a><br>
+	<a href="https://www.ft.com/content/b0985574-3342-41ca-a27e-5db9d0459069">Lula promises COP27 that ‘Brazil is back’ in climate change fight</a><br>
     """
     
     references_html = get_top(title) + references_html + get_bottom()
