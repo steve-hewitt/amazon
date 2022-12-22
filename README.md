@@ -23,27 +23,6 @@ Capstone Project<br>
         ├── Exploratory_Geopandas_Terra_Brasilis_Data.ipynb         <- Experimentation with deforestation data.
         ├── Union_Within_Geopandas_BDQueimadas_Deforestation.ipynb  <- GeoPandas merge experiments.
         └── get_BDqueimadas_data.ipynb                              <- Code to merge BDqueimadas files.
-    ├── experiments
-        ├── 3DCNN_Experiment.ipynb                                  <- Model experiment with 3D U-Net.
-        ├── 3DCNN_Experiment_small.ipynb                            <- Model experiment with 3D U-Net.
-        ├── 3DCNN_simplified_features.ipynb                         <- Model experiment with 3D CNN classifier.
-        ├── 3DCNN_simplified_output.ipynb                           <- Model experiment with 3D CNN classifier.
-        ├── CLSTM_Experiment_Defo.ipynb                             <- Model experiment with ConvLSTM.
-        ├── CLSTM_Experiment_WBCE_Defo_Wind.ipynb                   <- Model experiment with ConvLSTM.
-        ├── CLSTM_Experiment_WBCE_Loss.ipynb                        <- Model experiment with ConvLSTM.
-        ├── Conv_LSTM_Combo.ipynb                                   <- Model experiment with ConvLSTM and multiple inputs.
-        ├── Conv_LSTM_U-Net.ipynb                                   <- Model experiment with ConvLSTM feeding into U-Net.
-        ├── Conv_LSTM_U-Net_Micro.ipynb                             <- Model experiment with ConvLSTM feeding into U-Net.
-        ├── Conv_LSTM_U-Net_Small.ipynb                             <- Model experiment with ConvLSTM feeding into U-Net.
-        ├── Dataset_Constructor.ipynb                               <- Data pipeline prototype.
-        ├── Dataset_Constructor_small.ipynb                         <- Data pipeline prototype.
-        ├── Dataset_Constructor_v2.ipynb                            <- Data pipeline prototype.
-        ├── Dataset_Constructor_v4.ipynb                            <- Data pipeline prototype.
-        ├── Deforestation_Dataset_Test.ipynb                        <- Deforestation data transformation prototype.
-        ├── Predictive_Power_Test.ipynb                             <- Experiment to see how well features describe target output.
-        ├── Pretrained_Experiment.ipynb                             <- Prototype transfer learning model.
-        ├── Video_Transformer.ipynb                                 <- Model experiment with attention at fully-connected layer.
-        └── Wind_Data_Filter.ipynb                                  <- Wind data transformation prototype.
     ├── pipeline
         ├── Deforestation_cuDF.ipynb                                <- GPU-powered point-in-polygon filtering.
         └── VIIRS_Para_Filter_cuDF.ipynb                            <- GPU-powered point-in-polygon filtering.
@@ -53,6 +32,7 @@ Capstone Project<br>
         ├── wind_20210103.nc4                                       <- Sample data for testing wind filtering.
         ├── wind_20210104.nc4                                       <- Sample data for testing wind filtering.
         └── wind_20210105.nc4                                       <- Sample data for testing wind filtering.
+    ├── Amazon Fires - Presentation.pptx              <- Presentation explaining project.
     ├── CLSTM_Baseline.ipynb                          <- Baseline forecasting model.
     ├── Conv_LSTM_MNIST.ipynb                         <- Final forecasting model.
     ├── Dataset_Constructor_v3.ipynb                  <- Pipeline for baseline forecasting model.
